@@ -13,3 +13,15 @@
   interruptible: true
   script:
     - 'php-cs-fixer check -vvv --format gitlab'
+
+.lint-composer-json-file:
+  image:
+    name: 'php:8.3'
+  interruptible: true
+  rules:
+    - changes:
+        paths:
+          - 'composer.*'
+  script:
+    - 'curl -sS https://getcomposer.org/installer | php'
+    - 'php composer.phar validate --strict --no-check-version'
