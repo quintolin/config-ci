@@ -1,0 +1,5 @@
+include:
+  local: '.gitlab/lint.yml'
+
+lint-editorconfig:
+  extends: '.lint-editorconfig'
