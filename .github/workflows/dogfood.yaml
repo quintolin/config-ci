@@ -1,0 +1,9 @@
+name: 'Eat Your Own Dog Food'
+on:
+  push:
+  pull_request:
+permissions:
+  contents: 'read'
+jobs:
+  lint-editorconfig:
+    uses: './.github/workflows/lint-editorconfig.yaml'
