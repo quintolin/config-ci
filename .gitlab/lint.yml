@@ -12,7 +12,10 @@
       - ''
   interruptible: true
   script:
-    - 'php-cs-fixer check -vvv --format gitlab'
+    - 'curl -sS https://getcomposer.org/installer | php'
+    - 'php composer.phar config notify-on-install false'
+    - 'php composer.phar install'
+    - 'php-cs-fixer check -vvv --show-progress=dots'
 
 .lint-composer-json-file:
   image:
@@ -24,4 +27,4 @@
           - 'composer.*'
   script:
     - 'curl -sS https://getcomposer.org/installer | php'
-    - 'php composer.phar validate --strict --no-check-version'
+    - 'php composer.phar validate -vvv --strict --no-check-version'
